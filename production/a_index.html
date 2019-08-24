@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Banque de données</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/indexCss.css">
+
+    <link rel="shortcut icon" href="images/banqueData/id_card.png"/>
+</head>
+
+<body class="nav-md" ng-app="banqueIndex">
+<div class="container body" ng-controller="indexCTRL">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="profile">
+                    <div>
+                        <img src="images/banqueData/Logo_DIIS_site.jpg" alt="..." style="width: 100%">
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3></h3>
+                        <ul class="nav side-menu">
+                            <li><a href="a_index.html"><i class="fa fa-home"></i> Accueil </a>
+                            </li>
+                            <li><a><i class="fa fa-table"></i> Tableaux <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="tables_vih.html">Activités de vih</a></li>
+                                    <li><a href="tables_contraception.html">Activités de contaception</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-bar-chart-o"></i> Graphiques <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="tables_vih.html">Activités de vih</a></li>
+                                    <li><a href="tables_contraception.html">Activités de contaception</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>Plus de Détails</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> Analyses avancées <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="">Tableau</a></li>
+                                    <li><a href="">Graphique</a></li>
+                                    <li><a href="">Carte</a></li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span  aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout">
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <!--<div class="nav toggle">-->
+                    <!--<a id="menu_toggle"><i class="fa fa-bars"></i></a>-->
+                    <!--</div>-->
+
+                    <ul class="nav navbar-nav navbar-right" style="padding: 0px;">
+                        <li style="padding: 0px;">
+                            <a href="https://www.usaid.gov/cote-divoire" aria-expanded="false">
+                                <img src="images/banqueData/usaid.png" alt="" class="taileImage">
+                            </a>
+                        </li>
+                        <li style="padding: 0px;">
+                            <a href="https://www.measureevaluation.org/" aria-expanded="false">
+                                <img src="images/banqueData/MEASURE.jpg" alt="" class="taileImage">
+                            </a>
+                        </li>
+                        <li style="padding: 0px;">
+                            <a href="http://www.gouv.ci" aria-expanded="false">
+                                <img src="images/banqueData/ci.png" alt="" class="taileImage">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <!-- top tiles -->
+            <div class="row tile_count">
+                <div ng-repeat="element in elementValueAffiche" class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top" style="white-space: normal;"></i> {{element.name}}</span>
+                    <div class="count">{{element.value}}</div>
+                    <span class="count_bottom" style="white-space: normal;"><i
+                            class="green">{{element.periode}}, </i> <br>{{element.organisation}}</span>
+                </div>
+
+            </div>
+            <!-- /top tiles -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="dashboard_graph">
+
+                        <div class="row x_title">
+                            <div class="col-md-12">
+                                <h3><span ng-repeat="org in courbe1.organisation">{{org}}</span>
+                                    <small>Enfants nés de mères séropositives au VIH dépistés précocement</small>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div>
+                                <canvas id="line" class="chart chart-line" chart-data="courbe1.data" chart-colors="colours"
+                                        chart-labels="courbe1.periode" chart-series="courbe1.element"
+                                        chart-options="options"
+                                        chart-dataset-override="datasetOverride" chart-click="onClick">
+                                </canvas>
+                            </div>
+                            <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+                            <!--<div style="width: 100%;">-->
+                            <!--<div id="canvas_dahs" class="demo-placeholder" style="width: 100%; height:270px;"></div>-->
+                            <!--</div>-->
+                            <div>
+                                <canvas id="bar" class="chart chart-bar" chart-colors="colours"
+                                        chart-data="courbe1.data" chart-series="courbe1.element"
+                                        chart-labels="courbe1.periode" chart-options="options">
+                                </canvas>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+            <br/>
+
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="x_panel tile">
+                        <div class="x_title">
+                            <h2><span class="passLine">conjoints de femmes enceintes séropositives au VIH dépistés</span>
+                                <br>
+                            <small><span ng-repeat="org in donut1.organisation"> {{org}}</span>, <span ng-repeat="period in donut1.periode">{{period}}</span></small></h2>
+                            <br>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div>
+
+                            <canvas id="doughnut" class="chart chart-doughnut" chart-colors="colours"
+                                    chart-data="donut1.data"
+                                    chart-labels="donut1.element" chart-options="donut1.options">
+                            </canvas>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="x_panel tile">
+                        <div class="x_title">
+                            <h2><span class="passLine">Conjoints de femmes enceintes séronégatives au VIH dépistés</span><br>
+                                <small><span ng-repeat="org in donut1.organisation"> {{org}}</span>, <span ng-repeat="period in donut1.periode">{{period}}</span></small></h2>
+                            <br>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div>
+
+                            <canvas id="pie" class="chart chart-pie" chart-colors="colours"
+                                    chart-data="pie1.data"
+                                    chart-labels="pie1.element" chart-options="pie1.options">
+                            </canvas>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="../vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="../vendors/Flot/jquery.flot.js"></script>
+<script src="../vendors/Flot/jquery.flot.pie.js"></script>
+<script src="../vendors/Flot/jquery.flot.time.js"></script>
+<script src="../vendors/Flot/jquery.flot.stack.js"></script>
+<script src="../vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="../vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="js/moment/moment.min.js"></script>
+<script src="js/datepicker/daterangepicker.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<!-- Flot -->
+<script>
+    $(document).ready(function () {
+        var data1 = [
+            [gd(2012, 1, 1), 17],
+            [gd(2012, 1, 2), 74],
+            [gd(2012, 1, 3), 6],
+            [gd(2012, 1, 4), 39],
+            [gd(2012, 1, 5), 20],
+            [gd(2012, 1, 6), 85],
+            [gd(2012, 1, 7), 7]
+        ];
+
+        var data2 = [
+            [gd(2012, 1, 1), 82],
+            [gd(2012, 1, 2), 23],
+            [gd(2012, 1, 3), 66],
+            [gd(2012, 1, 4), 9],
+            [gd(2012, 1, 5), 119],
+            [gd(2012, 1, 6), 6],
+            [gd(2012, 1, 7), 9]
+        ];
+        $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
+            data1, data2
+        ], {
+            series: {
+                lines: {
+                    show: false,
+                    fill: true
+                },
+                splines: {
+                    show: true,
+                    tension: 0.4,
+                    lineWidth: 1,
+                    fill: 0.4
+                },
+                points: {
+                    radius: 0,
+                    show: true
+                },
+                shadowSize: 2
+            },
+            grid: {
+                verticalLines: true,
+                hoverable: true,
+                clickable: true,
+                tickColor: "#d5d5d5",
+                borderWidth: 1,
+                color: '#fff'
+            },
+            colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+            xaxis: {
+                tickColor: "rgba(51, 51, 51, 0.06)",
+                mode: "time",
+                tickSize: [1, "day"],
+                //tickLength: 10,
+                axisLabel: "Date",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Verdana, Arial',
+                axisLabelPadding: 10
+            },
+            yaxis: {
+                ticks: 8,
+                tickColor: "rgba(51, 51, 51, 0.06)",
+            },
+            tooltip: false
+        });
+
+        function gd(year, month, day) {
+            return new Date(year, month - 1, day).getTime();
+        }
+    });
+</script>
+<!-- /Flot -->
+
+<!-- JQVMap -->
+
+<!--<script src="_librairie/jquery/jquery-3.2.1.min.js"></script>-->
+<script src="_librairie/angular/angular.min.js"></script>
+<script src="_librairie/angular/angular-resource.min.js"></script>
+<script src="_librairie/chartjs/Chart.min.js"></script>
+<script src="_librairie/angularChart/angular-chart.min.js"></script>
+<script src="banqueJS/indexJS.js"></script>
+</body>
+</html>
